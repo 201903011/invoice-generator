@@ -11,9 +11,9 @@ https://react-invoice-generator.web.app/
 
 ### Screenshots
 
-<img src="https://imgur.com/rjisRPZ.jpg" style="max-width: 100px; width: 100%; height: auto;">
-<img src="https://imgur.com/vuiKcrK.jpg" style="max-width: 100px;width: 100%; height: auto;">
-<img src="https://imgur.com/bXNiAHT.jpg" style="max-width: 100px;width: 100%; height: auto;">
+<img src="https://imgur.com/rjisRPZ.jpg" style="max-width: 50px; width: 100%">
+<img src="https://imgur.com/vuiKcrK.jpg" style="max-width: 100px;width: 100%">
+<img src="https://imgur.com/bXNiAHT.jpg" style="max-width: 100px;width: 100%">
 
 ### Tools
 
@@ -23,16 +23,12 @@ https://react-invoice-generator.web.app/
 - Html-to-image
 - jsPDF
 
-### Instalation
+### Installation
 
 ```
-git clone https://github.com/hourmeng12/invoice-generator
+git clone https://github.com/201903011/invoice-generator
 
 npm install
 
 npm start / npm run build
 ```
-
-### Meta
-
-Hourmeng Khy
