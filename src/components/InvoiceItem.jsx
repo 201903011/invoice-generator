@@ -1,5 +1,5 @@
-import React from 'react';
-import InvoiceField from './InvoiceField';
+import React from "react";
+import InvoiceField from "./InvoiceField";
 
 const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
   const deleteItemHandler = () => {
@@ -12,9 +12,9 @@ const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
         <InvoiceField
           onEditItem={(event) => onEdtiItem(event)}
           cellData={{
-            placeholder: 'Item name',
-            type: 'text',
-            name: 'name',
+            placeholder: "Item name",
+            type: "text",
+            name: "name",
             id: id,
             value: name,
           }}
@@ -24,9 +24,9 @@ const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
         <InvoiceField
           onEditItem={(event) => onEdtiItem(event)}
           cellData={{
-            type: 'number',
-            min: '1',
-            name: 'qty',
+            type: "number",
+            min: "1",
+            name: "qty",
             id: id,
             value: qty,
           }}
@@ -37,24 +37,25 @@ const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
           xmlns="http://www.w3.org/2000/svg"
           className="absolute left-2 top-1/2 h-6 w-6 -translate-y-1/2 text-gray-400 sm:left-4"
           fill="none"
-          viewBox="0 0 24 24"
+          viewBox="40 -1 170 250"
           stroke="currentColor"
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            fill="#010101"
+            d="M153 23h41l15-23H55L40 23h26c27 0 52 2 62 25H55L40 71h91v1c0 17-14 43-60 43H48v22l90 113h41L85 133c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25z"
           />
         </svg>
         <InvoiceField
           onEditItem={(event) => onEdtiItem(event)}
           cellData={{
-            className: 'text-right',
-            type: 'number',
-            min: '0.01',
-            step: '0.01',
-            name: 'price',
+            className: "text-right",
+            type: "number",
+            min: "0.01",
+            step: "0.01",
+            name: "price",
             id: id,
             value: price,
           }}

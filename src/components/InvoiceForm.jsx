@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { uid } from 'uid';
-import InvoiceItem from './InvoiceItem';
-import InvoiceModal from './InvoiceModal';
-import incrementString from '../helpers/incrementString';
+import React, { useState } from "react";
+import { uid } from "uid";
+import InvoiceItem from "./InvoiceItem";
+import InvoiceModal from "./InvoiceModal";
+import incrementString from "../helpers/incrementString";
 const date = new Date();
-const today = date.toLocaleDateString('en-GB', {
-  month: 'numeric',
-  day: 'numeric',
-  year: 'numeric',
+const today = date.toLocaleDateString("en-GB", {
+  month: "numeric",
+  day: "numeric",
+  year: "numeric",
 });
 
 const InvoiceForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [discount, setDiscount] = useState('');
-  const [tax, setTax] = useState('');
+  const [discount, setDiscount] = useState("");
+  const [tax, setTax] = useState("");
   const [invoiceNumber, setInvoiceNumber] = useState(1);
-  const [cashierName, setCashierName] = useState('');
-  const [customerName, setCustomerName] = useState('');
+  const [cashierName, setCashierName] = useState("");
+  const [customerName, setCustomerName] = useState("");
   const [items, setItems] = useState([
     {
       id: uid(6),
-      name: '',
+      name: "",
       qty: 1,
-      price: '1.00',
+      price: "1.00",
     },
   ]);
 
@@ -36,9 +36,9 @@ const InvoiceForm = () => {
     setItems([
       {
         id: uid(6),
-        name: '',
+        name: "",
         qty: 1,
-        price: '1.00',
+        price: "1.00",
       },
     ]);
   };
@@ -49,9 +49,9 @@ const InvoiceForm = () => {
       ...prevItem,
       {
         id: id,
-        name: '',
+        name: "",
         qty: 1,
-        price: '1.00',
+        price: "1.00",
       },
     ]);
   };
@@ -184,24 +184,24 @@ const InvoiceForm = () => {
         <div className="flex flex-col items-end space-y-2 pt-6">
           <div className="flex w-full justify-between md:w-1/2">
             <span className="font-bold">Subtotal:</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>Rs{subtotal.toFixed(2)}</span>
           </div>
           <div className="flex w-full justify-between md:w-1/2">
             <span className="font-bold">Discount:</span>
             <span>
-              ({discount || '0'}%)${discountRate.toFixed(2)}
+              ({discount || "0"}%)Rs{discountRate.toFixed(2)}
             </span>
           </div>
           <div className="flex w-full justify-between md:w-1/2">
             <span className="font-bold">Tax:</span>
             <span>
-              ({tax || '0'}%)${taxRate.toFixed(2)}
+              ({tax || "0"}%)Rs{taxRate.toFixed(2)}
             </span>
           </div>
           <div className="flex w-full justify-between border-t border-gray-900/10 pt-2 md:w-1/2">
             <span className="font-bold">Total:</span>
             <span className="font-bold">
-              ${total % 1 === 0 ? total : total.toFixed(2)}
+              Rs{total % 1 === 0 ? total : total.toFixed(2)}
             </span>
           </div>
         </div>
@@ -241,6 +241,7 @@ const InvoiceForm = () => {
                   name="tax"
                   id="tax"
                   min="0.01"
+                  max="20"
                   step="0.01"
                   placeholder="0.0"
                   value={tax}
@@ -265,6 +266,7 @@ const InvoiceForm = () => {
                   name="discount"
                   id="discount"
                   min="0"
+                  max="100"
                   step="0.01"
                   placeholder="0.0"
                   value={discount}

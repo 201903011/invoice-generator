@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { toPng } from 'html-to-image';
-import { jsPDF } from 'jspdf';
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { toPng } from "html-to-image";
+import { jsPDF } from "jspdf";
 
 const InvoiceModal = ({
   isOpen,
@@ -20,17 +20,17 @@ const InvoiceModal = ({
   };
 
   const SaveAsPDFHandler = () => {
-    const dom = document.getElementById('print');
+    const dom = document.getElementById("print");
     toPng(dom)
       .then((dataUrl) => {
         const img = new Image();
-        img.crossOrigin = 'annoymous';
+        img.crossOrigin = "annoymous";
         img.src = dataUrl;
         img.onload = () => {
           // Initialize the PDF.
           const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'in',
+            orientation: "portrait",
+            unit: "in",
             format: [5.5, 8.5],
           });
 
@@ -48,8 +48,8 @@ const InvoiceModal = ({
           let pageHeight = pdf.internal.pageSize.getHeight();
 
           // Create a one-page canvas to split up the full image.
-          const pageCanvas = document.createElement('canvas');
-          const pageCtx = pageCanvas.getContext('2d');
+          const pageCanvas = document.createElement("canvas");
+          const pageCtx = pageCanvas.getContext("2d");
           pageCanvas.width = imgProps.width;
           pageCanvas.height = pxPageHeight;
 
@@ -62,7 +62,7 @@ const InvoiceModal = ({
             // Display the page.
             const w = pageCanvas.width;
             const h = pageCanvas.height;
-            pageCtx.fillStyle = 'white';
+            pageCtx.fillStyle = "white";
             pageCtx.fillRect(0, 0, w, h);
             pageCtx.drawImage(img, 0, page * pxPageHeight, w, h, 0, 0, w, h);
 
@@ -77,7 +77,7 @@ const InvoiceModal = ({
         };
       })
       .catch((error) => {
-        console.error('oops, something went wrong!', error);
+        console.error("oops, something went wrong!", error);
       });
   };
 
@@ -149,10 +149,10 @@ const InvoiceModal = ({
                             {item.qty}
                           </td>
                           <td className="min-w-[80px] text-right">
-                            ${Number(item.price).toFixed(2)}
+                            Rs{Number(item.price).toFixed(2)}
                           </td>
                           <td className="min-w-[90px] text-right">
-                            ${Number(item.price * item.qty).toFixed(2)}
+                            Rs{Number(item.price * item.qty).toFixed(2)}
                           </td>
                         </tr>
                       ))}
@@ -162,20 +162,20 @@ const InvoiceModal = ({
                   <div className="mt-4 flex flex-col items-end space-y-2">
                     <div className="flex w-full justify-between border-t border-black/10 pt-2">
                       <span className="font-bold">Subtotal:</span>
-                      <span>${invoiceInfo.subtotal.toFixed(2)}</span>
+                      <span>Rs{invoiceInfo.subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between">
                       <span className="font-bold">Discount:</span>
-                      <span>${invoiceInfo.discountRate.toFixed(2)}</span>
+                      <span>Rs{invoiceInfo.discountRate.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between">
                       <span className="font-bold">Tax:</span>
-                      <span>${invoiceInfo.taxRate.toFixed(2)}</span>
+                      <span>Rs{invoiceInfo.taxRate.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between border-t border-black/10 py-2">
                       <span className="font-bold">Total:</span>
                       <span className="font-bold">
-                        $
+                        Rs
                         {invoiceInfo.total % 1 === 0
                           ? invoiceInfo.total
                           : invoiceInfo.total.toFixed(2)}
